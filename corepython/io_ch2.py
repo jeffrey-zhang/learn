@@ -28,11 +28,11 @@ def parse(text):
     
     return sorted_word_cnt
 
-with open('core_python/in.txt', 'r') as fin:
+with open('corepython/in.txt', 'r') as fin:
     text = fin.read()
 
 word_and_freq = parse(text)
 
-with open('core_python/out.txt', 'w') as fout:
+with open('corepython/out.txt', 'w') as fout:
     for word, freq in word_and_freq:
         fout.write('{} {}\n'.format(word, freq))

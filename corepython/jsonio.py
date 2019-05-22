@@ -18,10 +18,10 @@ print('after json deserialization')
 print('type of original_params = {},original_params={}'.format(type(origial_params),origial_params))
 
 print('write the file in the disk...')
-with open('core_python/params.json','w') as fout:
+with open('corepython/params.json','w') as fout:
     params_str = json.dump(params,fout)
 
-with open('core_python/params.json','r') as fin:
+with open('corepython/params.json','r') as fin:
     origial_params = json.load(fin)
 
 print('type of original_params = {}, original_params={}'.format(type(origial_params),origial_params))
