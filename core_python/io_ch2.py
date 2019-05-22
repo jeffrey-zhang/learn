@@ -7,6 +7,8 @@ def parse(text):
 
     # 转为小写
     text = text.lower()
+
+    print(text)
     
     # 生成所有单词的列表
     word_list = text.split(' ')
