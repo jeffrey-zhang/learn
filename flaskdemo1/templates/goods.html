@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Goods page</title>
+    <style>
+        .line{
+            display: inline-block;
+            height: 1px;
+            width: 100%;
+            background: #00ccff;
+            overflow: hidden;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+{% for good in goods %}
+<li style="list-style-type: none">{{ good.name }} <span class="{{ loop.index | index_class }}">{{ good.price }}</span> </li>
+{% endfor %}
+</body>
+</html>

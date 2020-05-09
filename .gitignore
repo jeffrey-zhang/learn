@@ -104,3 +104,7 @@ venv.bak/
 .mypy_cache/
 
 key_gen/
+
+.vscode
+.idea
+.DS_Store
