@@ -1,1 +1,1 @@
-### This is learning repo
+### This is learning repo for hosting training sharing
