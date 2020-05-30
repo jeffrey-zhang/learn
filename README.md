@@ -2,7 +2,7 @@
 
 # Part I: Core Python
 # Part II: Flask
-# example: 
+# Part III: Example: 
   * Python in action
   * python Log
   * Python work
