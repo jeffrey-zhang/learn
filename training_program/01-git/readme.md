@@ -1,6 +1,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 我是任波波
+i am yanxu
 I'm amanda
 I'm Joyee-Zhou
 i am sunhua
@@ -13,3 +15,9 @@ I'm Joyee-Zhou.
 i am sunhua
 
 >>>>>>> 472055d444d2ba226bcb24aa8c63be5806cede87
+=======
+I'm yanxu
+I'm amanda
+I'm Joyee-Zhou.
+i am sunhua
+>>>>>>> 41c16aa015a29cf468d1e218da691cd1ff8ca06a
