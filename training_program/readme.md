@@ -1,3 +1,4 @@
+my name is amanda
 # 基本技能要求：
 - 基于AWS Cloud platform对现有内部平台开发定制工具与系统
 1. *熟练掌握Java语言 及相关web开发框架 Spring, Spring Boot, mybatis

@@ -1,3 +1,4 @@
+my name is amanda
 ### This is learning repo for hosting training sharing
 
 # Part I: Core Python
