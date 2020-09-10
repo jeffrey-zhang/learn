@@ -14,7 +14,16 @@
 |总分  |   80   |     90    |       72   |    84   |   94  |
 
 ----------------------------------------------------------------
----------------------------------
+:::image type="content" source="01-git/001.jpeg" alt-text="考核题目":::
+<div align=center>
+    <img src="/01-git/001.jpeg" width="80%"/>
+</div>
+
+:::image type="content" source="01-git/002.jpeg" alt-text="考核现场":::
+<div align=center>
+    <img src="/01-git/002.jpeg" width="80%"/>
+</div>
+-----------------------------------
 
 ## 考核，对团队评价：
 * 上述成绩基本符合考试的成绩，但是这只是测试
