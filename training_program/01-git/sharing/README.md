@@ -6,7 +6,7 @@
 * [回滚重置](reset.md)
 * [冲突解决](conflict.md)
 * [放入缓存](stash.md)
-* [版本发布](relased.md)
+* [版本发布](released.md)
 
 ## Git 工作区、暂存区、版本库
 
