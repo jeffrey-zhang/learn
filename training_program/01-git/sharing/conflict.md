@@ -1,5 +1,5 @@
 
-[Back to index page](index.md)  
+[Back to index page](README.md)  
 
 # 冲突解决
 
