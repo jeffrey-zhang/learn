@@ -2,57 +2,98 @@ import java.util.Scanner;
 public class exam11{
     public static void main(String[] args) {
         int num;
+        int A;
         Scanner ip = new Scanner(System.in);
-        System.out.print("ÇëÊäÈëĞèÒª´òÓ¡µÄÈı½ÇĞÎµÄ¸öÊı");
+        System.out.println("è¯·è¾“å…¥éœ€è¦æ‰“å°çš„ä¸‰è§’å½¢çš„ä¸ªæ•°");
         num = ip.nextInt();
-        ip.close();
+        System.out.println("1(ç­‰è¾¹) 2(ç­‰è…°) 3(ç›´è§’)" );
+        A=ip.nextInt();
+        System.out.println("ä½ è¾“å…¥çš„å­—ç¬¦ä¸º:"+A);
 
-        // String grade=input.nextString();
-        // System.out.println(grade);
-
-        // //´´½¨ÊäÈë¶ÔÏó
-        // Scanner sc=new Scanner(System.in);
-  
-        // //»ñÈ¡ÓÃ»§ÊäÈëµÄ×Ö·û´®
-        // String str="";
-        // System.out.print("ÇëÊäÈëÈÎÒâ×Ö·û:");
-        // str=sc.nextLine();
-        
-        // System.out.println("ÄãÊäÈëµÄ×Ö·ûÎª:"+str);
-
-
-        for(int w=1;w<=num;w++){
-            int rows=6;
+        if(A==1){
+            for(int w=1;w<=num;w++){
+                int rows=6;
+                    for(int i=1;i<rows;i++){
+                        for(int j=1;j<rows-j;j++){
+                            System.out.print(" ");
+                        }
+                        for(int k=1;k<=i*2-1;k++){
+                            System.out.print("*");
+                        }
+                        System.out.println();
+                    }
+                }
+        }
+        else if(A==2){
+            for(int w=1;w<=num;w++){
+                for(int i = 1; i<=5 ; i++) {
+                    int rows=6;
+                    for (int j = 1; j <= rows - i; j++)
+                        System.out.print(" ");
+                        for (int k = 1; k <= i * 2 - 1; k++)
+                            System.out.print("*");
+                            System.out.println();    
+                }
+             }
+        }
+        else if(A==3){
+            for(int w=1;w<=num;w++){
+                int rows=6;
                 for(int i=1;i<=rows;i++){
                     for(int k=1;k<=i*2-1;k++){
                         System.out.print("*");
-            }
-            System.out.println();
-        }
+                    }
+                    System.out.println();
+                }
+             }
         }
 
-
-    //     char grade = 'C';
  
-    //   switch(grade)
+    //   switch(A)
     //   {
-    //      case 'A' :
-    //         System.out.println("µÈ±ß"); 
+    //      case '1' :
+    //         for(int w=1;w<=num;w++){
+    //             int rows=6;
+    //                 for(int i=1;i<rows;i++){
+    //                     for(int j=1;j<rows-j;j++){
+    //                         System.out.print(" ");
+    //                     }
+    //                     for(int k=1;k<=i*2-1;k++){
+    //                         System.out.print("*");
+    //                     }
+    //                     System.out.println();
+    //                 }
+    //             }
     //         break;
-    //      case 'B' :
-    //      case 'C' :
-    //         System.out.println("µÈÑü");
+    //      case '2' :
+    //      for(int w=1;w<=num;w++){
+    //         for(int i = 1; i<=5 ; i++) {
+    //             int rows=6;
+    //             for (int j = 1; j <= rows - i; j++)
+    //                 System.out.print(" ");
+    //                 for (int k = 1; k <= i * 2 - 1; k++)
+    //                     System.out.print("*");
+    //                     System.out.println();    
+    //         }
+    //      }
     //         break;
-    //      case 'D' :
-    //         System.out.println("µÈ±ß");
+    //      case '3' :
+    //      for(int w=1;w<=num;w++){
+    //         int rows=6;
+    //         for(int i=1;i<=rows;i++){
+    //             for(int k=1;k<=i*2-1;k++){
+    //                 System.out.print("*");
+    //             }
+    //             System.out.println();
+    //         }
+    //      }
     //         break;
     //      default :
-    //         System.out.println("Î´ÖªµÈ¼¶");
+    //         System.out.println("");
     //   }
-    //   System.out.println("ÄãµÄµÈ¼¶ÊÇ " + grade);
 
 
-        // Ö±½ÇÈı½ÇĞÎ
+        // ç›´è§’ä¸‰è§’å½¢
         // int rows=6;
         // for(int i=1;i<=rows;i++){
         //     for(int k=1;k<=i*2-1;k++){
@@ -61,7 +102,7 @@ public class exam11{
         //     System.out.println();
         // }
         
-        // µÈÑüÈı½ÇĞÎ
+        // ç­‰è…°ä¸‰è§’å½¢
         // for(int i = 1; i<=5 ; i++) {
         //     for (int j = 1; j <= rows - i; j++)
         //         System.out.print(" ");
@@ -70,7 +111,7 @@ public class exam11{
         //             System.out.println();    
         // }
 
-        // µÈ±ßÈı½ÇĞÎ
+        // ç­‰è¾¹ä¸‰è§’å½¢
         // for(int i=1;i<rows;i++){
         //     for(int j=1;j<rows-j;j++){
         //         System.out.print(" ");
