@@ -4,6 +4,7 @@ public class exam{
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("请问需要打印多少个三角形：");
+        //输入
         int answer = scanner.nextInt();
         if (answer > 0){
             for (int i = 1; i <= answer; i++) {
@@ -14,6 +15,7 @@ public class exam{
         }
         
     }
+    //打印三角形
     public static void method() {
      for (int i = 1; i <= 5; i++) {
 
