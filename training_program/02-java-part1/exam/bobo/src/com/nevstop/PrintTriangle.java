@@ -1,12 +1,11 @@
 package com.nevstop;
 
-import java.util.Scanner;
-
 public class PrintTriangle {
+
     /**
-     * 打印三角形
+     * print a common triangle
      * @param a 三角形的行数
-     * @param b 三角形的个数
+     * @param b 打印出的三角形个数
      */
     public static void triangle(int a, int b){
         for (int i=0;i<a;i++){
