@@ -11,7 +11,7 @@
 ## Git 工作区、暂存区、版本库
 
 ![image](img/git2.jpeg)
-![image](img/git.png=500*500)
+![image](img/git.png)
 
 ## Tip
 
