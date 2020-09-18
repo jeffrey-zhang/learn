@@ -5,10 +5,13 @@ public class exam{
         Scanner scanner = new Scanner(System.in);
         System.out.println("请问需要打印多少个三角形：");
         int answer = scanner.nextInt();
-     
-       for (int i = 1; i <= answer; i++) {
-            method();
-       }
+        if (answer > 0){
+            for (int i = 1; i <= answer; i++) {
+                method();
+           }
+        }else {
+            System.out.println("错误输入");
+        }
         
     }
     public static void method() {
