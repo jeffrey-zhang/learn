@@ -1,4 +1,11 @@
+# java项目目录结构建议
 
+    controller ： 主要是对外的接口
+    service ： 核心业务逻辑
+    dao/mapper ： 数据库访问层
+    entity： 实体类，字段和数据库保持一致
+    vo： 前端专用类型，避免暴露数据库结构
+    common： 基础工具包和常量package
 # 类
  ![test](test.png)
 # 接口 
