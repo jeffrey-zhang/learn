@@ -1,16 +1,14 @@
 package com.trendmicro;
 
-import com.trendmicro.entity.Animal;
+
 import com.trendmicro.entity.Cat;
 import com.trendmicro.entity.Dolphin;
 import com.trendmicro.entity.Elephant;
 
-import javax.sound.midi.Soundbank;
+
 import java.util.Scanner;
 
 public class Main_App {
-
-
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
@@ -18,7 +16,6 @@ public class Main_App {
         System.out.println("你想看谁");
         System.out.println("1.猫咪 2.大象 3.海豚 0.退出");
         int type;
-        Animal animal;
         while (true){
             try {
                 type = input.nextInt();
