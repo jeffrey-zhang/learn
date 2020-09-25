@@ -1,4 +1,4 @@
-package com.trendmicro.model;
+package com.trendmicro.entity;
 
 /***
  * 小猫类继承自动物类

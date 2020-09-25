@@ -1,6 +1,7 @@
 package com.trendmicro.service.impl;
 
-import com.trendmicro.model.Animal;
+
+import com.trendmicro.entity.Animal;
 import com.trendmicro.service.AnimalService;
 
 public class AnimalServiceImpl implements AnimalService {

@@ -1,6 +1,9 @@
 package com.trendmicro;
 
-import com.trendmicro.model.*;
+import com.trendmicro.entity.Cat;
+import com.trendmicro.entity.ColorEnum;
+import com.trendmicro.entity.Dog;
+// import com.trendmicro.model.*;
 import com.trendmicro.service.AnimalService;
 import com.trendmicro.service.impl.AnimalServiceImpl;
 

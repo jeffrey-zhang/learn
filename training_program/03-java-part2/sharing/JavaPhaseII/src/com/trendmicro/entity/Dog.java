@@ -1,4 +1,4 @@
-package com.trendmicro.model;
+// package com.trendmicro.model;
 
 /***
  * 小狗类
