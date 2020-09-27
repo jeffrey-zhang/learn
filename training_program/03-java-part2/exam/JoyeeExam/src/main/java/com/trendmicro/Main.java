@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("-------欢迎来到动物园-------");
+        System.out.println("-----------欢迎来到动物园------------");
 
         Scanner ip = new Scanner(System.in);
         System.out.print("请输入需要和哪个小动物打招呼（阿拉伯数字）");
@@ -52,7 +52,7 @@ public class Main {
      * 实例鸟对象
      */
     public static void generateBird() {
-        Bird bird = new Bird("枝枝", 1, "小鸟", "模仿说话");
+        Bird bird = new Bird("枝枝", 1, "鹦鹉", "模仿说话");
         bird.selfIntroduction();
         bird.eat();
         bird.fly();

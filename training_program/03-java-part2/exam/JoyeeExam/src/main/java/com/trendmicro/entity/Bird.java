@@ -38,6 +38,6 @@ public class Bird extends Animal {
      */
 
     public void fly() {
-        System.out.println("擅长自由翱翔。");
+        System.out.println("擅长飞翔。");
     }
 }
