@@ -70,7 +70,9 @@ public class Animal {
     public void sleep(){
         System.out.println("玩累了，去休息了");
     }
-
+    /**
+     * 动物自我介绍
+     */
     public void intro(Animal animal){
         System.out.println("我的名字是"+animal.getName()+",我最喜欢的食物是"+animal.getFood());
     }

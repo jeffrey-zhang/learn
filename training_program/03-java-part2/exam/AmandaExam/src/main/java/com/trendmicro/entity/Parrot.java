@@ -1,4 +1,4 @@
-package trendmicro.entity;
+package com.trendmicro.entity;
 /***
  * 鹦鹉继承自动物类
  * 储存鹦鹉相关的信息

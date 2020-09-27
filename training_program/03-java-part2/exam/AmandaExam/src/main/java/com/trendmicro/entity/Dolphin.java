@@ -1,4 +1,4 @@
-package trendmicro.entity;
+package com.trendmicro.entity;
 /***
  * 海豚继承自动物类
  * 储存海豚相关的信息

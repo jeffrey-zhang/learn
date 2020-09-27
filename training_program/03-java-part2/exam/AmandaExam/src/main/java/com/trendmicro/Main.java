@@ -1,8 +1,8 @@
-package trendmicro;
+package com.trendmicro;
 
-import trendmicro.entity.*;
-import trendmicro.service.AnimalService;
-import trendmicro.service.impl.AnimalServiceImpl;
+import com.trendmicro.entity.*;
+import com.trendmicro.service.AnimalService;
+import com.trendmicro.service.impl.AnimalServiceImpl;
 
 import java.io.*;
 import java.util.Scanner;

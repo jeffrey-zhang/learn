@@ -1,7 +1,7 @@
-package trendmicro.service.impl;
+package com.trendmicro.service.impl;
 
-import trendmicro.entity.*;
-import trendmicro.service.AnimalService;
+import com.trendmicro.entity.*;
+import com.trendmicro.service.AnimalService;
 
 public class AnimalServiceImpl implements AnimalService {
 
