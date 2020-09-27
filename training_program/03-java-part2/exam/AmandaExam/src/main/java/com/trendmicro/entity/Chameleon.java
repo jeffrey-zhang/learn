@@ -1,4 +1,4 @@
-package trendmicro.entity;
+package com.trendmicro.entity;
 
 /***
  * 变色龙类

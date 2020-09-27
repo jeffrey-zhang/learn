@@ -1,4 +1,4 @@
-package trendmicro.entity;
+package com.trendmicro.entity;
 
 /***
  *  动物类；储存动物的基本信息；

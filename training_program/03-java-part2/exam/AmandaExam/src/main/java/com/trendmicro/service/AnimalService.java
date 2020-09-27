@@ -1,4 +1,4 @@
-package trendmicro.service;
+package com.trendmicro.service;
 
 public interface AnimalService {
     void generateParrot();
