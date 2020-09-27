@@ -1,7 +1,5 @@
 package com.trendmicro.entity;
 
-import javax.sound.midi.Soundbank;
-
 /**
  * 猫类
  */
