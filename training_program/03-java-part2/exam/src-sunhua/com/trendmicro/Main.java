@@ -62,29 +62,4 @@ public class Main {
         tiger.Tree1();
         tiger.Sign();
     }
-
-
-
-
-
-
-
-
-    // static void error() throws IOException {
-    //     // 长度为2的数组
-    //     int[] n = new int[2];
-
-    //     // 定义文件路径
-    //     String path = "test.txt";
-    //     File file = new File(path);
-    //     InputStream inputStream = null;
-    //     try {
-    //         System.out.println(n[1]);
-    //         inputStream = new FileInputStream(file);
-    //         System.out.println(inputStream.read());
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //     }
-
-    // }
 }
