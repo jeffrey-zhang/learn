@@ -2,7 +2,7 @@ package com.trendmicro.entity;
 
 public class Animal {
     /**
-     * 球类：储存球类的基本信息
+     * 动物类：储存动物类的基本信息
      */
     private String name;//名字
     private int age;//年龄
