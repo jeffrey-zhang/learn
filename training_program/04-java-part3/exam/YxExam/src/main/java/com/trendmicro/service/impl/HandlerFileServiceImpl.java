@@ -1,16 +1,14 @@
 package com.trendmicro.service.impl;
 
+import com.mysql.cj.util.StringUtils;
 import com.trendmicro.service.IHandlerFileService;
 
 import java.io.*;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /***
- * 用户交流文件处理，插入数据库
+ * 处理CSV类型的文件，插入数据库
  */
 public class HandlerFileServiceImpl implements IHandlerFileService {
 
@@ -23,37 +21,38 @@ public class HandlerFileServiceImpl implements IHandlerFileService {
     public void handlerMultiFile() throws IOException {
         System.out.println("多线程处理文件 开始 ...");
         final String path = this.getClass().getResource("/").getPath() + "FileModel";
-        System.out.println("目录：" + path);
         File file = new File(path);
         if (file.exists()) {
-            if (file.listFiles() == null) {
+            if (file.listFiles() == null || file.listFiles().length < 1) {
                 return;
             }
-            File[] files = file.listFiles();
-            System.out.println("目录中包含文件数量：" + files.length);
-            for (int i = 0; i < files.length; i++) {
-                if (files[i].isFile()) {
+            // 过滤不符合规范的文件
+            List<File> fileList = filterFile(file.listFiles());
+            if (fileList == null || fileList.size() < 1) {
+                System.out.println("没有符合规范的文件需要处理。");
+                return;
+            }
+            System.out.println("目录中符合规范的文件数量：" + fileList.size());
+            for (int i = 0; i < fileList.size(); i++) {
                     final int finalI = i;
-                    final String filePath = path + "/" + files[finalI].getName();
+                    final String filePath = path + "/" + fileList.get(i).getName();
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                System.out.println("开始执行线程" + finalI + "...");
                                 handlerFile(finalI, filePath);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-
                         }
                     }).start();
-                }
             }
         }
     }
 
     @Override
     public void handlerFile(Integer thread, String filepath) throws IOException, SQLException {
+        System.out.println("开始执行线程" + thread + "...");
         FileInputStream inputStream = null;
         BufferedReader bufferedReader = null;
         Connection conn = null;
@@ -62,38 +61,40 @@ public class HandlerFileServiceImpl implements IHandlerFileService {
             File file = new File(filepath);
             inputStream = new FileInputStream(file);
             bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            String strLine = "";
-            String tableName = file.getName().replace(".csv", "").replace("-", "");
-            int count = 1;
-            Map<Integer, String> tableColumnMap = new HashMap<Integer, String>();
             // 表的列名
-            String columnNames = "";
+            String columnNames = null;
             // 用于储存 生成多少个问号
             String columnValue = "";
             // 统计多少个列
             int columnCount = 0;
-            while ((strLine = bufferedReader.readLine()) != null) {
-                if (count == 1) {
-                    // 向DB新增表
-                    tableColumnMap = createTable(conn, tableName, strLine);
-                    System.out.println("线程" + thread + ":创建表(" + tableName + ")完成。");
-                    // 处理 表 列的值和个数
-                    for (Map.Entry<Integer, String> entry : tableColumnMap.entrySet()) {
-                        columnNames = entry.getValue();
-                        columnCount = entry.getKey();
-                        for (int i = 0; i < entry.getKey(); i++) {
-                            columnValue += "?,";
-                        }
-                        // 去掉最后一个逗号
-                        columnValue = columnValue.substring(0, columnValue.length() - 1);
-                    }
-                } else {
-                    // System.out.println("线程"+thread+"，执行插入第"+count+"行。");
-                    //  插入数据
-                    insertData(conn, tableName, strLine, columnNames, columnValue, columnCount, thread, count);
+            // 定义表名
+            String tableName = file.getName().replace(".csv", "").replace("-", "");
+            // 接受column的个数和名称
+            Map<Integer, String> tableColumnMap = new HashMap<Integer, String>();
+            // 取文件首行内容
+            String columnLine = bufferedReader.readLine();
+            tableColumnMap = createTable(conn, tableName, columnLine);
+            System.out.println("线程" + thread + ":创建表(" + tableName + ")完成。");
+            // 处理 表 列的值和个数
+            for (Map.Entry<Integer, String> entry : tableColumnMap.entrySet()) {
+                columnNames = entry.getValue();
+                columnCount = entry.getKey();
+                for (int i = 0; i < entry.getKey(); i++) {
+                    columnValue += "?,";
                 }
-                count++;
+                // 去掉最后一个逗号
+                columnValue = columnValue.substring(0, columnValue.length() - 1);
             }
+
+            int whileCount = 2;
+            String contentLine = "";
+            while ((contentLine = bufferedReader.readLine()) != null) {
+                // System.out.println("线程"+thread+"，操作第"+count+"行。");
+                //  插入数据
+                insertData(conn, tableName, contentLine, columnNames, columnValue, columnCount, thread, whileCount);
+                whileCount++;
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -115,28 +116,27 @@ public class HandlerFileServiceImpl implements IHandlerFileService {
      *
      * @param conn
      * @param tableName
-     * @param strLine
+     * @param columnLine
      * @return
      * @throws SQLException
      */
-    private Map<Integer, String> createTable(Connection conn, String tableName, String strLine) throws SQLException {
+    private Map<Integer, String> createTable(Connection conn, String tableName, String columnLine) throws SQLException {
         Map<Integer, String> map = new HashMap<Integer, String>();
         String createTableSql = "create table if not exists " + tableName + " (id int(4) not null primary key auto_increment";
         //  去掉第一个 无效的字符
-        strLine = strLine.replace("\ufeff", "");
-        String[] fields = strLine.split(",");
+        columnLine = columnLine.replace("\ufeff", "");
+        String[] fields = columnLine.split(",");
         for (int i = 0; i < fields.length; i++) {
             createTableSql += "," + (fields[i]) + " varchar(300)";
         }
         createTableSql += ")";
-        map.put(fields.length, strLine);
+        map.put(fields.length, columnLine);
         PreparedStatement statement = conn.prepareStatement(createTableSql);
         // 执行
         statement.executeUpdate();
         // 关闭
         statement.close();
         return map;
-
     }
 
     /**
@@ -200,6 +200,25 @@ public class HandlerFileServiceImpl implements IHandlerFileService {
             newContent = newContent.replace(stringCon, stringCon.replace(",", "&xx&"));
         }
         return newContent;
+    }
+
+    /**
+     * 过滤掉不符合规范的文件
+     * 符合条件的文件：内容不为空的CSV文件
+     * @param files
+     * @return
+     */
+    private List<File> filterFile(File [] files){
+        List<File> fileList = new ArrayList<>(Arrays.asList(files));
+        Iterator<File> iterator = fileList.listIterator();
+        while (iterator.hasNext()){
+            File itemFile = iterator.next();
+            if(!itemFile.isFile()||!itemFile.getName().endsWith(".csv")|| itemFile.length() <1){
+                System.out.println("--忽略不符规范文件（"+itemFile.getName()+"）.");
+                iterator.remove();
+            }
+        }
+        return fileList;
     }
 
     static {
