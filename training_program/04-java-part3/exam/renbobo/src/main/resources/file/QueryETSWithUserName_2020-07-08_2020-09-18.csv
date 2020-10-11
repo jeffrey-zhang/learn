@@ -1,6 +1,4 @@
 ﻿Time,Region,UserName,ETSMember,ETSServiceAuto,ETSQuestionAuto,AnswerHit,ETSQuesionManual,UserSays,UserSaysLower,JARVISAnswerKB,KBpageId,KBurl,KBWikiPosition,JARVISAnswerForm,SessionId
-2020-07-08T00:01:27.148211Z,NABU,,,,,,,distribution,distribution,,,,,,33d1755f-ae5d-4785-93f3-055f0471c1b2
-2020-07-08T00:01:28.67042Z,NABU,,,,,,,Modify member from a existing DL,modify member from a existing dl,NABU Mobile Phone,,,,Modify Distribution List Member,33d1755f-ae5d-4785-93f3-055f0471c1b2
 2020-07-08T00:08:18.727724Z,NABU,,,,,,,ditr,ditr,,,,,,89ce983d-7215-468d-b39d-4b454b910d4e
 2020-07-08T00:08:20.020287Z,NABU,,,,,,,Modify member from a existing DL,modify member from a existing dl,NABU Mobile Phone,,,,Modify Distribution List Member,89ce983d-7215-468d-b39d-4b454b910d4e
 2020-07-08T00:15:12.000351Z,PH,,,,,,,PLS Customer Information Change,pls customer information change,How to Request for a Port Configuration?,,,,PLS Customer Information Change,a1bba550-b5ba-4cd7-b09d-60e285758f1a
@@ -198,7 +196,7 @@
 2020-07-08T10:34:13.085572Z,PH,,,,,,,duo,duo,MyToken/DUO: How to activate DUO account,,,,MyToken/DUO,02bc2ce4-78eb-46f8-a1e9-cfdc1ebdab40
 2020-07-08T10:35:19.287958Z,TW,,,,,,,DEEP SECURITY,deep security,DSaaS support,,,,Deep Security,ed177e0f-0ace-4e2c-b44c-07a2d1a931f1
 2020-07-08T10:37:39.25418Z,TW,,,,,,,hi,hi,,,,,,dbba6142-fe74-4874-a851-bc50533aef47
-2020-07-08T10:38:53.952662Z,CN,,,,,,,resetÂ security questions,resetÂ security questions,MyToken/DUO/RSA SecurID: Setup Security Questions for External Accounts,,,,,83293074-ec13-4f57-a479-c308f8008a65
+2020-07-08T10:38:53.952662Z,CN,,,,,,,"resetÂ security questions","resetÂ security questions",MyToken/DUO/RSA SecurID: Setup Security Questions for External Accounts,,,,,83293074-ec13-4f57-a479-c308f8008a65
 2020-07-08T10:39:05.75169Z,TW,,,,,,,agent install fail,agent install fail,,,,,,dbba6142-fe74-4874-a851-bc50533aef47
 2020-07-08T10:41:18.854035Z,APAC,,,,,,,modify dl,modify dl,Modify distribution list in MS outlook 2016,,,,Change Distribution List Owner,b35abb30-5918-4a95-9726-b18b4bcbc9eb
 2020-07-08T10:42:37.990639Z,PH,,,,,,,ivr message,ivr message,Playing Voicemail Messages,,,,,15e85864-daaa-454b-854d-4acedcfacfa8
@@ -570,9 +568,7 @@
 2020-07-09T13:39:17.047807Z,Europe,,,,,,,distributor access,distributor access,,,,,,75d719f9-85fb-42f9-8550-d2c83ac12225
 2020-07-09T13:39:17.904476Z,Europe,,,,,,,Transfer DL to new owner,transfer dl to new owner,Modify distribution list in MS outlook 2016,,,,Change Distribution List Owner,75d719f9-85fb-42f9-8550-d2c83ac12225
 2020-07-09T13:42:25.111644Z,TW,,,,,,,modify distribution list member,modify distribution list member,,,,,,ef14ab2d-33e5-4b4f-8d7a-fa09c1f1b7be
-2020-07-09T13:42:37.446003Z,Europe,,,,,,,"credit
-card access request","credit
-card access request",How to request InfoSec Security Scan,,,,Credit Card Access,c6096998-97b6-402b-be2c-a44c02ae289c
+2020-07-09T13:42:37.446003Z,Europe,,,,,,,"credit card access request","creditn card access request",How to request InfoSec Security Scan,,,,Credit Card Access,c6096998-97b6-402b-be2c-a44c02ae289c
 2020-07-09T13:55:50.178998Z,APAC,,,,,,,product license,product license,Titanium License for Employee,,,,TM Product License Request,dcebcf26-52ce-4d89-8fcb-c52715445832
 2020-07-09T13:57:35.284461Z,Europe,,,,,,,apollo,apollo,,,,,,15c54cb3-cf6b-464f-b581-5d57501474ea
 2020-07-09T14:04:45.469968Z,NABU,,,,,,,product cloud,product cloud,,,,,Product Cloud,d0543957-0181-4d6f-9849-2c064e3d1045
@@ -12879,7 +12875,7 @@ blocklist",,,,,,a303f040-b8b1-487e-b59d-46ce52fe76ea
 2020-09-02T03:50:11.577525Z,TW,,,,,,,Request f5 VPN Access for External Employee,request f5 vpn access for external employee,MyToken/DUO/RSA SecurID: Setup Security Questions for External Accounts,349554252,,,349554252,0cf486d3-31f9-48fb-9dc5-18755b88cabe
 2020-09-02T03:52:21.560435Z,PH,,,,,,,dcs,dcs,,,,,,f65da8cd-becd-45c3-912a-c6076a250af7
 2020-09-02T03:52:31.760908Z,TW,,,,,,,domain group,domain group,Security group,391024618,,,391024618,2223425a-74b1-495c-b6b5-3ab7658efef9
-2020-09-02T03:53:04.931785Z,TW,,,,,,,24-Jul,24-Jul,,,,,,2223425a-74b1-495c-b6b5-3ab7658efef9
+2020-09-02T03:53:04.931785Z,TW,,,,,,,24/7,24/7,,,,,,2223425a-74b1-495c-b6b5-3ab7658efef9
 2020-09-02T03:53:22.176296Z,TW,,,,,,,get help from GIS help,get help from gis help,,,,,,2223425a-74b1-495c-b6b5-3ab7658efef9
 2020-09-02T03:59:39.256147Z,PH,,,,,,,network,network,How to Request for a Port Configuration?,21266679,,,21266679,35700053-8cdc-47f5-831b-ca7de6b3533d
 2020-09-02T04:04:04.979469Z,PH,,,,,,,request server access,request server access,How Do I Request for a Symposium Web Access,21266500,,,21266500,2e55d61d-6e5b-458d-8fea-2c2f8815fcdd
