@@ -97,7 +97,7 @@ public class ReadFile {
                     File infile = new File("/home/devops-engineer/learning/training_program/04-java-part3/exam/sunhua/src/main/resources/File/QueryETSWithUserName_2020-07-08_2020-09-18.csv");
                     BufferedReader reader = new BufferedReader(new FileReader(infile));
                     String rows = reader.readLine();
-                    // 表头数据,去除表头Time前2个空白字符
+                    // 表头数据,去除表头Time前2个空白字符,从第二位开始截取
                     String rows1 = rows.substring(1, rows.length());
                     String item1[] = rows1.split(",");
                     System.out.println(item1);
