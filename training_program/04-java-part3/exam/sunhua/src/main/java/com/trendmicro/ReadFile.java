@@ -103,6 +103,8 @@ public class ReadFile {
                     System.out.println(item1);
                     //向数据库中插入表头数据
                     String insertSql = "insert into " + csvFilename + "(item1) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    //" (Time,Region,UserName,ETSMember,ETSServiceAuto,ETSQuestionAuto,AnswerHit,ETSQuesionManual,UserSays,UserSaysLower,JARVISAnswerKB,KBpageId,KBurl,KBWikiPosition,JARVISAnswerForm,SessionId) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
                     String[] lineData = inString.split(",");
                     PreparedStatement insertDataStatement = conn.prepareStatement(insertSql);
                     for (int i = 0; i < lineData.length; i++) {
@@ -123,10 +125,7 @@ public class ReadFile {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("没找到文件！");
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("读取文件出错！");
-        } catch (SQLException e) {
+        }  catch (SQLException e) {
             // 处理 JDBC 错误
             e.printStackTrace();
         } finally {
