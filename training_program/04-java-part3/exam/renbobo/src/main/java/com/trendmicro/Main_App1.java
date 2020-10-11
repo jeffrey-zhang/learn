@@ -10,9 +10,10 @@ import java.io.FileReader;
  * 第一版直接读取目标文件
  */
 public class Main_App1 {
+    static File f1 = new File("src/main/resources/file/QueryETSWithUserName_2020-07-08_2020-09-18.csv");
     public static void main(String[] args) throws Exception {
         //获取resources中
-        File f1 = new File("src/main/resources/file/QueryETSWithUserName_2020-07-08_2020-09-18.csv");
+
         StringBuffer insert = new StringBuffer();
         if (f1.exists()) {
             BufferedReader br = new BufferedReader(new FileReader(f1));
@@ -37,9 +38,10 @@ public class Main_App1 {
             }
             String insertSql=insert.substring(0,insert.length()-1);
             insertSql+=")";
+            int count =1;
             while ((content=br.readLine())!=null){
-                int count =1;
-                String[] columnValue =content.split(",");
+                count++;
+                String[] columnValue =content.trim().split(",(?=([^\\\"]*\\\"[^\\\"]*\\\")*[^\\\"]*$)",-1);;
                 if (columnValue.length==column.length ){
                     DBUtil.state=DBUtil.conn.prepareStatement(insertSql);
                     for (int i=0;i<16;i++){

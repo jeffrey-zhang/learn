@@ -9,9 +9,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class Main_App2 {
+    static File f1 = new File("src/main/resources/file");
     public static void main(String[] args) throws Exception {
+
         //获取resources中file文件夹下的所有以.csv结尾的文件名并建立数据库表
-        File f1 = new File("src/main/resources/file");
+
         File[] files = f1.listFiles();
         for (File file : files){
             if (file.getName().endsWith(".csv")){
@@ -50,7 +52,7 @@ public class Main_App2 {
             int count =1;
             while ((content=br.readLine())!=null){
                 count++;
-                String[] columnValue =content.split(",");
+                String[] columnValue =content.trim().split(",(?=([^\\\"]*\\\"[^\\\"]*\\\")*[^\\\"]*$)",-1);;
                 if (columnValue.length==column.length ){
                     DBUtil.state=DBUtil.conn.prepareStatement(insertSql);
                     for (int i=0;i<16;i++){
@@ -58,7 +60,7 @@ public class Main_App2 {
                     }
                     DBUtil.state.execute();
                 }else {
-                    System.out.println("第"+count+"数据不合法,已过滤");
+                    System.out.println(Thread.currentThread().getName()+ "第"+count+"数据不合法,已过滤");
                 }
 
             }
