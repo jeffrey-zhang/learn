@@ -13,10 +13,10 @@ import java.sql.SQLException;
 public class ReadFile {
     public static void main(String[] args) throws SQLException, IOException {
 
-        ReadFile rf = new ReadFile();
-        rf.getFile();
-        rf.connectMySQL();
-        rf.readFile();
+        ReadFile file = new ReadFile();
+        file.getFile();
+        file.connectMySQL();
+        file.readFile();
         System.out.println("结束");
     }
 
@@ -97,17 +97,13 @@ public class ReadFile {
                     File infile = new File("/home/devops-engineer/learning/training_program/04-java-part3/exam/sunhua/src/main/resources/File/QueryETSWithUserName_2020-07-08_2020-09-18.csv");
                     BufferedReader reader = new BufferedReader(new FileReader(infile));
                     String rows = reader.readLine();
-                    // 表头数据,去除表头前2个空白字符
+                    // 表头数据,去除表头Time前2个空白字符
                     String rows1 = rows.substring(1, rows.length());
                     String item1[] = rows1.split(",");
                     System.out.println(item1);
                     //向数据库中插入表头数据
                     String insertSql = "insert into " + csvFilename + "(item1) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                     String[] lineData = inString.split(",");
-                    // 不符合规范的数据 跳过
-                    if (lineData.length != 16) {
-                        continue;
-                    }
                     PreparedStatement insertDataStatement = conn.prepareStatement(insertSql);
                     for (int i = 0; i < lineData.length; i++) {
                         String value = lineData[i];
