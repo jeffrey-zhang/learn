@@ -31,7 +31,7 @@ public class mysql {
             String rowvalue[]=new String[item1.length];
             for(String ele:item1){
                 System.out.println(ele);
-                String rowvalue[]=ele;
+                // String rowvalue[]=ele;
             }
             System.out.println(item1.length);
             
