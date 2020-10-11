@@ -5,20 +5,30 @@ import com.trendmicro.util.DBUtil;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+import java.sql.SQLException;
 
-/**
- * 第一版直接读取目标文件
- */
-public class Main_App1 {
+public class Main_App2 {
     public static void main(String[] args) throws Exception {
-        //获取resources中
-        File f1 = new File("src/main/resources/file/QueryETSWithUserName_2020-07-08_2020-09-18.csv");
+        //获取resources中file文件夹下的所有以.csv结尾的文件名并建立数据库表
+        File f1 = new File("src/main/resources/file");
+        File[] files = f1.listFiles();
+        for (File file : files){
+            if (file.getName().endsWith(".csv")){
+                System.out.println(file.getName());
+                handFile(file);
+            }
+        }
+
+    }
+
+    private static void handFile(File f1) throws IOException, SQLException {
         StringBuffer insert = new StringBuffer();
         if (f1.exists()) {
             BufferedReader br = new BufferedReader(new FileReader(f1));
             StringBuffer creatSql = new StringBuffer();
 
-            String tableName = f1.getName().substring(0,f1.getName().length()-4).replace("-","_");
+            String tableName = f1.getName().substring(0, f1.getName().length()-4).replace("-","_");
             creatSql.append("create table if not exists "+tableName+"(id int primary key AUTO_INCREMENT");
             String field = br.readLine().substring(1);
             String[] column=field.split(",");
@@ -37,8 +47,9 @@ public class Main_App1 {
             }
             String insertSql=insert.substring(0,insert.length()-1);
             insertSql+=")";
+            int count =1;
             while ((content=br.readLine())!=null){
-                int count =1;
+                count++;
                 String[] columnValue =content.split(",");
                 if (columnValue.length==column.length ){
                     DBUtil.state=DBUtil.conn.prepareStatement(insertSql);
@@ -52,8 +63,6 @@ public class Main_App1 {
 
             }
             System.out.println("插入数据完成");
-
         }
-
     }
 }
