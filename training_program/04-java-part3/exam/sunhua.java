@@ -15,11 +15,11 @@ import java.io.File;
 /**
  * Hello world!
  */
-public final class App {
-    private static int row;
+public final class sunhua {
+    // private static int row;
 
-    private App() {
-    }
+    // private App() {
+    // }
 
     /**
      * Says hello to the world.
@@ -28,9 +28,16 @@ public final class App {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
+
+        //jdbc shujuku
+        private static final String driver = "com.mysql.cj.jdbc.Driver";
+        private static final String url = "jdbc:mysql://127.0.0.1:3306/sunhua";
+        private static final String user = "root";
+        private static final String password = "123456";
+
+
         // 需要处理的csv表格
-        File infile = new File(
-                "/home/sunhua/sunhua-product/src/main/java/com/trendmicro/QueryETSWithUserName_2020-07-08_2020-09-18.csv");
+        File infile = new File("/home/devops-engineer/learning/training_program/04-java-part3/exam/QueryETSWithUserName_2020-07-08_2020-09-18.csv");
 
         // String strLine = "";
         try {
@@ -45,6 +52,8 @@ public final class App {
 
             String line = null;
             int lineCount = 1;
+
+            
             while ((line = reader.readLine()) != null) {
 
                 if (lineCount == 1) {
