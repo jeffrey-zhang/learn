@@ -84,10 +84,10 @@ public class ReadFile {
                     }
 
                     createTable += ")";
-                    System.out.println("创建table：" + createTable);
-                    System.out.println("表创建完成");
+                    System.out.println(createTable);
+
                     PreparedStatement createTableStatement = conn.prepareStatement(createTable);
-                    // 执行nFile = new File(path);
+                    // 执行File = new File(path);
                     createTableStatement.executeUpdate();
                     // 关闭
                     createTableStatement.close();
