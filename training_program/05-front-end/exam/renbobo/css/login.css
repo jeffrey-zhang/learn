@@ -1,0 +1,34 @@
+
+#container{
+	border: #000000 solid;
+	width: 50%;
+	height:auto;
+	margin:0 auto;
+	margin-top: 12.5%;
+}
+
+form{
+	border: solid #F1B0B7;
+	width: 50%;
+	height: 85%;
+	padding-left: 5%;
+	margin: 0 auto;
+	margin-top:20%;
+	margin-bottom: 20%;
+
+}
+button{
+	float: left;
+	width: 50%;
+	margin-bottom: 20%;
+}
+
+#head{
+	width: 10%;
+	height: 10%;
+	margin-left:30% ;
+	border-radius: 50%;
+}
+input{
+	width: 100%;
+}

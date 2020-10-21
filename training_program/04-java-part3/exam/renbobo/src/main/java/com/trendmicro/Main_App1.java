@@ -41,7 +41,7 @@ public class Main_App1 {
             int count =1;
             while ((content=br.readLine())!=null){
                 count++;
-                String[] columnValue =content.trim().split(",(?=([^\\\"]*\\\"[^\\\"]*\\\")*[^\\\"]*$)",-1);;
+                String[] columnValue =content.replace("of2003"," ").trim().split(",(?=([^\\\"]*\\\"[^\\\"]*\\\")*[^\\\"]*$)",-1);;
                 if (columnValue.length==column.length ){
                     DBUtil.state=DBUtil.conn.prepareStatement(insertSql);
                     for (int i=0;i<16;i++){
