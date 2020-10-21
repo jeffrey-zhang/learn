@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../bootstrap/css//bootstrap.css">
+    <script src="../js/login.js"></script>
+</head>
+
+<body>
+    <div id="content">
+        <div class="main">
+            <form action="">
+                <div class="login">
+                    <!-- <h1 style="text-align: center;height: 30px;">Login</h1> -->
+                    <div>
+                        <span>Username:</span> <input type="text" id="user_name" placeholder="请输入用户名"
+                            class="form-control user"><br>
+                    </div>
+                    <br>
+                    <br>
+                    <div>
+                        <span>&nbsp;Password:</span> <input type="password" id="password" placeholder="请输入密码"
+                            class="form-control">
+                    </div>
+                    <div class="input">
+                        &nbsp;
+                        <input type="reset" name="" id="">&nbsp;&nbsp;&nbsp;
+                        <a href="" style="color: black;font-size: 14px;"><button id="btn" class="btn-success">log in</a>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var text = '{ "userinfo" : [' +
+        '{ "username":"admin" , "pwd":"1" },' +
+        '{ "username":"sun" , "pwd":"1" },' +
+        '{ "username":"hua" , "pwd":"1" } ]}';
+    var obj = JSON.parse(text);//将json格式
+    console.log(obj);
+    var btn = document.getElementById("btn");
+    btn.onclick = function () {
+        var text = '{ "userinfo" : [' +
+            '{ "username":"admin" , "pwd":"1" },' +
+            '{ "username":"sun" , "pwd":"1" },' +
+            '{ "username":"hua" , "pwd":"1" } ]}';
+        var obj = JSON.parse(text);//将json格式转换成js string格式
+
+        var x = document.getElementById("user_name").value;
+        var y = document.getElementById("password").value;
+
+        if (x == null || y == null || x == "" || y == "") {
+            alert("You need to input username and password!");
+        }
+        //验证账号密码是否和json数组里的一致
+        if ((x == obj.userinfo[0].username || x == obj.userinfo[1].username || x == obj.userinfo[2].username) && (y == obj.userinfo[0].pwd || y == obj.userinfo[1].pwd || y == obj.userinfo[2].pwd)) {
+            // alert("页面将于3秒后跳转")
+            window.open("./report.html");
+        } else {
+            alert("Username or password is wrong!");
+
+        }
+
+    }
+</script>

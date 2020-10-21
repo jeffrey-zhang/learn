@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Account</title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+<link rel="stylesheet" href="../css/report.css">
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="../css/reset.css">
+<script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+<script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+<style>
+    .style {
+        text-align: center;
+    }
+
+    .td {
+        font-size: 14px;
+    }
+
+    .success {
+        background-color: green;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div id="main">
+        <div id="left">
+            <div id="b">
+                <div id="jstree">
+                    <ul>
+                        <li>Self-Service
+                            <ul>
+                                <li>Account manager</li>
+                                <li>Change Password</li>
+                            </ul>
+                        </li>
+                        <li>Report
+                            <ul>
+                                <li><span id="report">Auto</span></li>
+                                <li>Manual</li>
+                                <li>Chart</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="right">
+            <div style="height: 300px;overflow: auto;">
+                <table class="table table-bordered" style="height: 200px;overflow: auto;">
+                    <caption>Restlt</caption>
+                    <thead>
+                        <tr>
+                            <th style="text-align: center; font-size: 14px;">ID</th>
+                            <th style="text-align: center;font-size: 14px;">Name</th>
+                            <th style="text-align: center;font-size: 14px;">age</th>
+                            <th style="text-align: center;font-size: 14px;">Gender</th>
+                            <th style="text-align: center;font-size: 14px;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tb">
+                    </tbody>
+                </table>
+            </div>
+            <div style="height: 400px;margin-top: 10px; display: flex;">
+                <div id="echart" style="width: 550px;height: 400px;">
+
+                </div>
+                <div id="bingtu" style="width: 500px;height: 400px;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $('#jstree').jstree();
+            $('#jstree').on("changed.jstree", function (e, data) {
+                if (data.node.id == 'j1_4') {
+                    window.open('./report.html')
+                };
+                if (data.node.id == 'j1_7') {
+                    window.open('./echart.html')
+                };
+                if (data.node.id == 'j1_2') {
+                    window.open('./account.html')
+                }
+            });
+        });
+
+        // 页面打开运行该方法，渲染数据
+        create();
+
+
+        var myChart = echarts.init(document.getElementById('echart'));
+        var option = {
+            title: {
+                text: '学生年龄'
+            },
+            tooltip: {},
+            legend: {
+                data: ['年龄']
+            },
+            xAxis: {
+                data: []
+            },
+            yAxis: {},
+            series: [{
+                name: '年龄',
+                type: 'bar',
+                data: []
+            }]
+        };
+
+
+
+        var myChart1 = echarts.init(document.getElementById('bingtu'));
+
+        option1 = {
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '55%',
+                    data: [
+                        { value: 62, name: 'tom' },
+                        { value: 75, name: 'tom' },
+                        { value: 87, name: 'tom' },
+                        { value: 22, name: 'jack' },
+                        { value: 18, name: 'alice' },
+                        { value: 18, name: 'alice' }
+                    ],
+                    // roseType: 'angle',
+                    itemStyle: {
+                        normal: {
+                            shadowBlur: 200,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        console.log(option1.series[0].data[0].value);
+
+
+        function c(ele) { return document.createElement(ele) };
+        function s(ele) { return document.querySelector(ele) };
+
+
+        // 动态插入数据
+        let data = [
+            { id: 1001, name: 'tom', age: 62, gender: '男' },
+            { id: 1001, name: 'tom', age: 75, gender: '女' },
+            { id: 1001, name: 'tom', age: 87, gender: '男' },
+            { id: 1002, name: 'jack', age: 22, gender: '男' },
+            { id: 1003, name: 'alice', age: 18, gender: '女' },
+            { id: 1003, name: 'alice', age: 18, gender: '女' }
+        ]
+        // 条形图
+        for (let index = 0; index < data.length; index++) {
+            option.xAxis.data.push(data[index].name);
+            option.series[0].data.push(data[index].age)
+        }
+        // 饼图
+        for (let index = 0; index < data.length; index++) {
+            console.log(data[index].name);
+            option1.series[0].data[index].value == data[index].age;
+            option1.series[0].data[index].name == data[index].name;
+        }
+        myChart.setOption(option);
+        myChart1.setOption(option1)
+
+
+        // 放到localhost里面
+        let dataStr = JSON.stringify(data);
+        localStorage.setItem('data', dataStr);
+
+        // 封装动态创建表格行与列
+        function create() {
+            let user_data = JSON.parse(localStorage.data);
+            for (let i = 0; i < user_data.length; i++) {
+                // 创建行
+                let tr = c('tr');
+                tr.className = 'style';
+                // console.log(user_data[i]);
+                //创建id序号td
+                let td_id = c('td');
+                td_id.innerText = user_data[i].id;
+
+                //创建姓名td
+                let td_name = c('td');
+                td_name.innerText = user_data[i].name;
+
+                //创建年龄td
+                let td_age = c('td');
+                td_age.innerText = user_data[i].age;
+
+                //创建性别td
+                let td_gender = c('td');
+                td_gender.innerText = user_data[i].gender;
+
+                //创建Action td
+                let td_action = c('td');
+
+                // 创建action按钮
+                let action_btn = c('input');
+                action_btn.type = 'button';
+                action_btn.value = 'Update';
+                action_btn.className = 'btn btn-success';
+                td_action.appendChild(action_btn);
+                let trs = s('#tb').getElementsByTagName('tr')
+
+
+                action_btn.onclick = function () {
+                    trs[i].className = 'success';
+                    alert('Update Success')
+                }
+                // 把创建出来的tr插入到表格中
+                tr.appendChild(td_id);
+                tr.appendChild(td_name);
+                tr.appendChild(td_age);
+                tr.appendChild(td_gender);
+                tr.appendChild(td_action);
+                s('tbody').appendChild(tr)
+            }
+        }
+
+    </script>
+</body>
+
+</html>
