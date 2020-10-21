@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomePage</title>
+  <script id="bfwone" data="dep=jquery.17&err=0" type="text/javascript"
+    src="http://repo.bfw.wiki/bfwrepo/js/bfwone.js"></script>
+  <script type="text/javascript">
+    bready(function () {
+      use(["jquery.treeview", "jquery.treeview"], function () {
+        $('#tree').treeview();
+        // console.log(e);
+      });
+    });
+  </script>
+
+</head>
+
+<style>
+  /* 创建2个相等的列 */
+  .column {
+    float: left;
+    width: 30%;
+  }
+
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+  }
+
+  .column table {
+    width: 800px;
+    height: 200px;
+  }
+
+  .column table tr th {
+    text-align: center;
+  }
+
+  .column table tr td {
+    text-align: center;
+  }
+</style>
+
+<body>
+  <div class="row">
+    <div class="column">
+      <ul id="tree" class="filetree">
+        <ul>
+          <li><span class="folder">Self Service</span>
+
+            <ul>
+              <li><span class="folder"><a href="http://127.0.0.1:5500/HomePage-Account.html" target="_blank">Account
+                    Management</a></span></li>
+
+              <li><span class="folder">Change Password</span></li>
+
+            </ul>
+          </li>
+          <li><span class="folder">Report</span>
+            <ul>
+              <li><span class="folder">Auto</span></li>
+              <li><span class="folder">Manual</span></li>
+              <li><span class="folder"><a href="http://127.0.0.1:5500/HomePage-Chart.html"
+                    target="_blank">Chart</a></span></li>
+
+
+            </ul>
+          </li>
+        </ul>
+      </ul>
+
+    </div>
+
+    <div class="column">
+      <div>
+        <table border="1">
+          <caption>Summary</caption>
+          <tr>
+            <th>Month</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>January</td>
+            <td>$100</td>
+            <td>$100</td>
+            <td>$100</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td>February</td>
+            <td>$50</td>
+            <td>$100</td>
+            <td>$100</td>
+            <td>$100</td>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <table border="1">
+          <caption>Detail</caption>
+          <tr>
+            <th>Month</th>
+            <th>Savings</th>
+            <th>Savings</th>
+            <th>Savings</th>
+            <th>Savings</th>
+          </tr>
+          <tr>
+            <td>January</td>
+            <td>$100</td>
+            <td>$100</td>
+            <td>$100</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td>February</td>
+            <td>$50</td>
+            <td>$100</td>
+            <td>$100</td>
+            <td>$100</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
