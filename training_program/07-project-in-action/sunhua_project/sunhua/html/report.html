@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>jsTree test</title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+<link rel="stylesheet" href="../css/report.css">
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="../css/reset.css">
+
+<body>
+    <div id="main">
+        <div id="left">
+            <div id="b">
+                <div id="jstree">
+                    <ul>
+                        <li>Self-Service
+                            <ul>
+                                <li>Account manager</li>
+                                <li>Change Password</li>
+                            </ul>
+                        </li>
+                        <li>Report
+                            <ul>
+                                <li><span id="report">Auto</span></li>
+                                <li>Manual</li>
+                                <li>Chart</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="right">
+            <div class="top">
+                <table class="table table-bordered">
+                    <caption>Summary</caption>
+                    <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th>城市</th>
+                            <th>邮编</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tanmay</td>
+                            <td>Bangalore</td>
+                            <td>560001</td>
+                        </tr>
+                        <tr>
+                            <td>Sachin</td>
+                            <td>Mumbai</td>
+                            <td>400003</td>
+                        </tr>
+                        <tr>
+                            <td>Uma</td>
+                            <td>Pune</td>
+                            <td>411027</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="buttom">
+            </div>
+            <table class="table table-bordered">
+                <caption>Detail</caption>
+                <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>城市</th>
+                        <th>邮编</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tanmay</td>
+                        <td>Bangalore</td>
+                        <td>560001</td>
+                    </tr>
+                    <tr>
+                        <td>Sachin</td>
+                        <td>Mumbai</td>
+                        <td>400003</td>
+                    </tr>
+                    <tr>
+                        <td>Uma</td>
+                        <td>Pune</td>
+                        <td>411027</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $('#jstree').jstree();
+            $('#jstree').on("changed.jstree", function (e, data) {
+                if (data.node.id == 'j1_4') {
+                    window.open('./report.html')
+                };
+                if (data.node.id == 'j1_7') {
+                    window.open('./echart.html')
+                };
+                if (data.node.id == 'j1_2') {
+                    window.open('./account.html')
+                }
+            });
+        });
+        var report = document.getElementById("report");
+        console.log(report);
+        report.onclick = function () {
+            console.log(555);
+        }
+    </script>
+</body>
+
+</html>
