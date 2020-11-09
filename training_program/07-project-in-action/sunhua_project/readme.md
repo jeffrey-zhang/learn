@@ -1,4 +1,4 @@
-####
+##创建数据库和数据表
 CREATE DATABASE `springboot`;
 
 USE `springboot`;
@@ -17,7 +17,7 @@ CREATE TABLE `t_user` (
 
 
 
-####
+#插入数据
 insert into 
   springboot.t_user (
     id, 
