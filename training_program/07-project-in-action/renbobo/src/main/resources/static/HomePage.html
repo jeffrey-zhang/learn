@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="css/homePage.css">
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+	<script src="js/HomePage.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" src=" https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+	<script type="application/javascript">
+			$.ajax({
+				type: "get",
+				url:"http://localhost:8080/user",
+				success:function (data) {
+					var groupTable=$('#tbody');
+					for (var i=0;i<data.length;i++){
+						groupTable.append("<tr>" +
+						"<td>"+data[i].id+"</td>"+
+						"<td>"+data[i].name+"</td>"+
+						"<td>"+data[i].age+"</td>"+
+						"<td>"+data[i].password+"</td>"+
+						"<td><button name='btn2' type='button' onclick='deleteUser()'>删除</button></td></tr>"
+						)
+					}
+				}
+			});
+
+			function deleteUser(){
+
+				if (confirm("确实要删除吗")){
+					alert("删除成功")
+				}
+			}
+
+			$.ajax({
+				type: "get",
+				url: "http://localhost:8080/avg",
+				success: function (data) {
+					// 基于准备好的dom，初始化echarts实例
+					var myChart = echarts.init(document.getElementById('main'));
+					var chinese =data.obj.chinese;
+					var math =data.obj.math;
+					var english =data.obj.english;
+					// 指定图表的配置项和数据
+					var option = {
+						title: {
+							text: '各科平均分'
+						},
+						tooltip: {},
+						legend: {
+							data: ['分数']
+						},
+						xAxis: {
+							data: ["语文", "数学", "英语"]
+						},
+						yAxis: {},
+						series: [{
+							name: '分数',
+							type: 'bar',
+							data: [chinese, math, english]
+						}]
+					}
+					// 使用刚指定的配置项和数据显示图表。
+					myChart.setOption(option);
+				}
+			});
+
+
+			function search(){
+				var username = $("#key").val();
+				$.ajax({
+					type: "get",
+					url:"http://localhost:8080/selectUser",
+					data: {"username":username},
+					success:function (data) {
+						var groupTable=$('#tbody').html("");
+						for (var i=0;i<data.length;i++){
+							groupTable.append("</tr><tr>" +
+									"<td>"+data[i].id+"</td>"+
+									"<td>"+data[i].name+"</td>"+
+									"<td>"+data[i].age+"</td>"+
+									"<td>"+data[i].password+"</td>"+
+									"<td><button name='btn2' type='button' onclick='deleteUser()'>删除</button></td></tr>"
+							)
+						}
+					}
+				});
+			}
+
+
+
+	</script>
+	<title>HomePage</title>
+<body>
+	<div id="container">
+		
+		<div id="d1">
+			<div class="tab">
+				<ul class="title">
+					<span>self service</span>
+					<ul>
+						<li class="active"><a href="#">Account Mgmt</a></li>
+						<li><a href="#">Password</a></li>
+					</ul>
+					<span>Report</span>
+					<ul>
+						<li><a href="#">Auto</a></li>
+						<li><a href="#">Manual</a></li>
+						<li><a href="#">Chart</a></li>
+					</ul>
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+		
+		<div id="d2">
+			<div id="content">
+				<div class="mod">
+					<div id="d3">
+						<div style="margin: 0.625rem;">
+							<span style="font-size: large;" >UserName:</span>
+							<input style="width:25rem;height:1.875rem;" placeholder="请输入搜索内容" type="text"  name="key" id="key">
+							<button style="width:5rem;height:2.2rem ;" onclick="search()"><span style="font-size: large;">search</span></button>
+						</div>	
+					</div>
+					<table id="table" style="margin-left: 2rem;" border="1px" width="760px" >
+						<thead id="thead" >
+							<tr>
+								<th>ID</th>
+								<th>name</th>
+								<th>age</th>
+								<th>password</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody id="tbody"></tbody>
+					</table>
+				</div>
+				<div class="mod" style="display: none">
+					<h1>修改密码</h1>
+					<form style="margin-top: 10%;margin-left: 15%;">
+						<table><tr>
+							<td style="text-align: right">账号：</td>
+							<td><input type="text" name="username"></td>
+							<td></td>
+							<tr>
+								<td style="text-align: right">原密码：</td>
+								<td><input type="password" name="password"></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td style="text-align: right;">新密码：</td>
+								<td><input type="password" name="newPassword"></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td style="text-align: right;">确认新密码：</td>
+								<td><input type="password" name="reNewPassword" ></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<button type="button">确认修改</button>
+									<button type="reset" style="width: 50%;" >重置</button>
+								</td>
+							</tr>
+						</table>
+					</form>
+					
+				</div>
+				<div class="mod" style="display: none">
+					<span>关于automation 的report</span>
+				</div>
+				<div class="mod" style="display: none">
+					<span>关于manual的report</span>
+				</div>
+				<div class="mod" style="display: none">
+					<div>
+						 <div id="chart_div"></div> 
+					</div>
+					<div id="main" style="width: 600px;height:400px;"></div>
+					<div id="main1" style="width: 600px;height:400px;"></div>
+					<script type="text/javascript">
+
+					</script>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

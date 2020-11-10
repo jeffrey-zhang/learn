@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link type="text/css" rel="stylesheet"  href="css/login.css" />
+
+	<title>Login</title>
+</head>
+<body>
+	<div id="container">
+		<form id="myForm">
+			<table>
+				<tr>
+					<td>username:</td>
+					<td>
+						<input type="text" id="username"  name="username"  placeholder="username">
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>password:</td>
+					<td><input type="password"  id="password" name="password"  placeholder="password"></td>
+					<td></td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td colspan="2">
+						<button id="submit" type="button">登录</button>
+						<button id="reset"  type="reset" οnclick="formReset()" >重置</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+
+		<script type="application/javascript">
+			$("#submit").click(function (){
+				var username = $("#username").val();
+				var password = $("#password").val();
+				$.ajax({
+					type: "post",
+					url:"http://localhost:8080/login",
+					data:{"username":username,"password":password},
+					success:function (data) {
+						if (data.code==200){
+							window.location.href="HomePage.html";
+						}else if(data.code==400){
+							alert("密码或账号错误")
+							window.location.href="login.html";
+						}
+					}
+				})
+			});
+		</script>
+	</div>
+</body>
+</html>

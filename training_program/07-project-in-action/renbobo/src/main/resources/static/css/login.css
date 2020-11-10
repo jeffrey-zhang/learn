@@ -1,0 +1,25 @@
+#container{
+	width: 50%;
+	height:auto;
+	margin:0 auto;
+	margin-top: 12.5%;
+}
+
+form{
+	width: 50%;
+	height: 85%;
+	padding-left: 5%;
+	margin: 0 auto;
+	margin-top:20%;
+	margin-bottom: 20%;
+
+}
+button{
+	float: left;
+	width: 50%;
+	margin-bottom: 20%;
+}
+
+input{
+	width: 100%;
+}

@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+
+#spring:
+#  datasource:
+#    url:
+#    username: root
+#    password: 123456
+#  thymeleaf:
+#    cache: false
+
+mybatis:
+  type-aliases-package: com.trendmicro.entity
+  # 原来mapper与mapper.xml在同一路径，现在不在同一路径需要设置下面的参数，目的就是告诉*.xml文件的路径
+  mapper-locations: classpath:mapper/*.xml
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/learn
+    password: 123456
+    username: root
+  freemarker:
+    template-loader-path: classpath:/templates/
+    cache: false
+    charset: utf-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+    suffix: .ftl

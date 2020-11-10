@@ -1,0 +1,40 @@
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `learn` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `learn`;
+DROP TABLE IF EXISTS `score`;
+CREATE TABLE `score` (
+  `id` int NOT NULL AUTO_INCREMENT COMMENT 'primary key',
+  `user_id` int DEFAULT NULL COMMENT '学生主键',
+  `chinese` double DEFAULT NULL COMMENT '语文分数',
+  `math` double DEFAULT NULL COMMENT '语文分数',
+  `english` double DEFAULT NULL COMMENT '语文分数',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `age` int NOT NULL,
+  `password` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `score` (`id`,`user_id`,`chinese`,`math`,`english`) VALUES (1,1,87,98,90),(2,2,80,90,80),(3,3,75,78,89);
+
+INSERT INTO `user` (`id`,`name`,`age`,`password`) VALUES (1,'张三',19,'aaaaaa'),(2,'李白',23,'vbbb'),(3,'admin1',22,'admin'),(4,'admin2',22,'admin'),(5,'admin3',22,'admin'),(6,'admin4',22,'admin'),(7,'admin5',22,'admin'),(8,'admin6',22,'admin'),(9,'admin7',22,'admin'),(10,'admin8',22,'admin'),(11,'admin9',22,'admin');
+
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
