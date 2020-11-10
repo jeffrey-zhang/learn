@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoginPage</title>
+</head>
+
+<style>
+    * {
+        text-decoration: none;
+    }
+
+    #header {
+        margin: auto;
+        /* padding-top: 200px; */
+        border: 1px solid #CCC;
+        width: 500px;
+        height: 250px;
+        margin-top: 180px;
+
+
+    }
+
+    #header .content {
+        margin: auto;
+        width: 600px;
+        padding-top: 20px;
+        padding-left: 80px;
+
+
+    }
+
+    #header .content {
+        margin: auto;
+        width: 600px;
+        padding-top: 20px;
+        padding-left: 80px;
+
+
+    }
+
+    #header .content .title {
+        margin: auto;
+        padding-left: 140px;
+
+
+    }
+
+    #header .content #form {
+        margin: auto;
+        padding-top: 30px;
+
+    }
+
+    #header .content #reset {
+        margin: auto;
+        margin-left: 8px;
+
+    }
+</style>
+
+<script src="../js/jquery.js"></script>
+<script>
+
+    function validateForm() {
+        console.log("into");
+        $.ajax({
+            type: "get",
+            url: "http://localhost:8080/login",
+            data: {
+                "username": $("#username").val(),
+                "password": $("#pwd").val(),
+            },
+            success: function (response) {
+                if (response.toString() == 'ok') {
+                    console.log("success");
+                    window.location.href = "/html/home.html";
+
+                } else {
+                    alert("Username or password is wrong!");
+                    console.log("error");
+
+                }
+            },
+            error: function () {
+                alert("请求服务器失败!");
+            }
+        });
+
+    }
+
+    function formReset() {
+        //document.getElementById("form2").reset();
+        window.location.href = "";
+    }
+
+
+
+</script>
+
+<body>
+    <div id="header">
+
+
+        <div class="content">
+
+            <h3 class="title">
+                Login
+            </h3>
+            <!-- <button onclick="test1()">xxxx</button> -->
+            <div id="form">
+                username: <input id="username" type="text" placeholder="Please input username" />
+                <br />
+                <br />
+                password: <input id="pwd" type="password" placeholder="Please input password" />
+                <div id="all" style="margin-top: 30px; margin-left: 70px;">
+                    <button id="reset" onclick="formReset()">Reset</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button id="login" onclick="validateForm()">Login</button>
+                </div>
+
+            </div>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChartPage</title>
+</head>
+<link rel="stylesheet" href="../css/page.css">
+<style>
+    #content #charts {
+        position: absolute;
+        top: 35px;
+        left: 220px;
+
+    }
+
+    #content #charts #chart2 {
+        position: absolute;
+        top: 30px;
+        left: 530px;
+    }
+
+    #content #charts #form {
+        position: absolute;
+        top: 150px;
+        left: 170px;
+        padding-top: 300px;
+    }
+
+    #content #charts #form thead {
+        font-weight: bold;
+    }
+</style>
+
+
+<body>
+    <div id="content">
+        <!-- 头部标题 -->
+        <div id="header">
+            <h1>Chart Page</h1>
+        </div>
+        <!-- 左列导航 -->
+        <div id="menu">
+            <h2 class="menu">Menu</h2>
+            <ul id="ul"><br>
+                <li>Self Service
+                    <ul>
+                        <li><a href="accountMgmt.html">Account Mgmt</a></li><br>
+                        <li>Change Password</li>
+                    </ul>
+                </li><br><br>
+                <li><a href="report.html">Report</a>
+                    <ul>
+                        <li>Auto</li><br>
+                        <li>Manual</li><br>
+                        <li><a href="chart.html">Chart</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+        <!-- 右列图表-->
+        <div id="charts">
+            <div id="chart">
+                <div id="chart1" style="width:550px;height: 400px;"></div>
+                <div id="chart2" style="width:550px;height: 400px;"></div>
+            </div>
+            <div id="form">
+                <table border="1px" cellspacing="0px" width="600px" height="100px">
+
+                    <thead>
+                        <tr id="thead">
+                            <td>ID</td>
+                            <td>UserName</td>
+                            <td>Sex</td>
+                            <td>Score</td>
+
+                        </tr>
+                    </thead>
+
+                    <!-- 给标签定义id属性和属性值,通过属性值来操作标签 -->
+                    <tbody id="tb"></tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- 数据统计表图 -->
+    <!-- 引入 echarts.js -->
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+
+    <script src="../js/jquery.js"></script>
+
+    <script>
+        var value;
+        var name;
+        var char1Data = [];
+        var char2Datax = [];
+        var char2Datay = [];
+
+        $(document).ready(function () {
+            $.ajax({
+                type: "post",
+                url: "http://localhost:8080/accountMgmt",
+                dataType: "json",
+                data: {},
+                success: function (response) {
+                    initData(response);
+                    //对返回数据进行处理
+                    for (var i = 0; i < response.length; i++) {
+                        char1Data.push({ "name": response[i].accountname, "value": response[i].score }); 
+                        char2Datax.push(response[i].accountname);
+                        char2Datay.push(response[i].score);
+
+                    }
+                },
+                error: function () {
+                    alert("请求服务器失败!");
+                }
+            }).done(function () {
+
+                var mychartpie = echarts.init(document.getElementById("chart1"));
+                mychartpie.setOption({
+                    series: [
+                        {
+                            name: 'chart1',
+                            type: 'pie',    // 设置图表类型为饼图
+                            radius: '50%',  // 饼图的半径，外半径为可视区尺寸（容器高宽中较小一项）的 55% 长度。
+                            data: char1Data
+                    //         data: [          // 数据数组，name 为数据项名称，value 为数据项值
+                    //     { value: 88, name: 'joyee' },
+                    //     { value: 74, name: 'naomi' },
+                    //     { value: 83, name: 'feifei' },
+                    //     { value: 30, name: 'xiaobai' },
+                    //     { value: 80, name: 'lili' },
+                    //     { value: 90, name: 'xiaoming' },
+                    // ]
+                        }
+                    ]
+                })
+
+                var myChart = echarts.init(document.getElementById('chart2'));
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: 'line Chart'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data: ['Score']
+                    },
+                    xAxis: {
+                        data: char2Datax
+                        // data: ["joyee", "naomi", "feifei", "xiaobai", "lili", "xiaoming"]
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: 'score',
+                        type: 'line',
+                        data: char2Datay
+                        // data: [88, 74, 83, 30, 80, 90]
+                    }]
+                };
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+
+            });
+        });
+
+        function initData(info) {
+            str = ''
+            for (var i = 0; i <= info.length - 1; i++) {
+                str += '<tr>';
+                str += `<td>${i + 1}</td>`;
+                str += `<td>${info[i].accountname}</td>`;
+                str += `<td>${info[i].sex}</td>`;
+                str += `<td>${info[i].score}</td>`;
+                str += '</tr>';
+            }
+
+            $("#tb").html(str);
+
+
+        }
+
+    </script>
+</body>
+
+</html>

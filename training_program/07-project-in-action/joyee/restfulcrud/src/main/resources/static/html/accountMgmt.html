@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccountMgmt</title>
+</head>
+
+<link rel="stylesheet" href="../css/page.css">
+<style>
+    #content #mgmt {
+        position: absolute;
+        top: 85px;
+        left: 400px;
+    }
+
+    #content #mgmt #choice .search {
+        border: solid 1px #CCC;
+        padding: 20px 70px 20px 13px;
+        margin-top: 5px;
+        /* background: #ccc; */
+
+    }
+
+    #content #mgmt #choice .search #text {
+        width: 450px;
+        height: 25px;
+    }
+
+    #content #mgmt #choice .search #button {
+        width: 60px;
+        height: 24px;
+        background: #ccc;
+        color: black;
+    }
+
+    #content #result {
+        padding-top: 70px;
+    }
+
+    #content #mgmt #result thead {
+        font-weight: bold;
+        /* height: 8px;
+        padding-top: 20px; */
+    }
+</style>
+
+<!-- 账号管理 -->
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/account.js"></script>
+
+
+<body>
+    <div id="content">
+        <!-- 头部标题 -->
+        <div id="header">
+            <h1>Account Mgmt</h1>
+        </div>
+        <!-- 左列导航 -->
+        <div id="menu">
+            <h2 class="menu">Menu</h2>
+            <ul id="ul"><br>
+                <li>Self Service
+                    <ul>
+                        <li><a href="accountMgmt.html">Account Mgmt</a></li><br>
+                        <li>Change Password</li>
+                    </ul>
+                </li><br><br>
+                <li><a href="report.html">Report</a>
+                    <ul>
+                        <li>Auto</li><br>
+                        <li>Manual</li><br>
+                        <li><a href="chart.html">Chart</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+        <!-- 右列搜索器 -->
+        <div id="mgmt">
+            <div id="choice">
+                <h4>Mgmt</h4>
+                <div class="search">
+
+                    UserName &nbsp;&nbsp;<input id="name" type="text" placeholder="Please input username">&nbsp;&nbsp;
+                    <button id="button" onclick="accountSearch()">search</button>
+
+
+                </div>
+
+            </div>
+            <div id="result">
+                <h4>Result</h4>
+                <table border="1px" cellspacing="0px" width="600px" height="100px">
+
+                    <thead>
+                        <tr id="thead">
+                            <td>ID</td>
+                            <td>UserName</td>
+                            <td>Sex</td>
+                            <td>Score</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+
+                    <!-- 给标签定义id属性和属性值,通过属性值来操作标签 -->
+                    <tbody id="tb"></tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
