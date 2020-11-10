@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomePage</title>
+  <script id="bfwone" data="dep=jquery.17&err=0" type="text/javascript"
+    src="http://repo.bfw.wiki/bfwrepo/js/bfwone.js"></script>
+  <script type="text/javascript">
+    bready(function () {
+      use(["jquery.treeview", "jquery.treeview"], function () {
+        $('#tree').treeview();
+        // console.log(e);
+      });
+    });
+  </script>
+
+</head>
+
+<style>
+  /* 创建2个相等的列 */
+  .column {
+    float: left;
+    width: 30%;
+  }
+
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+  }
+
+  .column table {
+    width: 800px;
+    height: 200px;
+  }
+
+  .column table tr th {
+    text-align: center;
+  }
+
+  .column table tr td {
+    text-align: center;
+  }
+</style>
+
+<body onload="init()">
+  <div class="row">
+    <div class="column">
+      <ul id="tree" class="filetree">
+        <ul>
+          <li><span class="folder">Self Service</span>
+
+            <ul>
+              <li><span class="folder"><a href="../templates/HomePage-Account.html" target="_blank">Account
+                    Management</a></span></li>
+
+              <li><span class="folder">Change Password</span></li>
+
+            </ul>
+          </li>
+          <li><span class="folder">Report</span>
+            <ul>
+              <li><span class="folder">Auto</span></li>
+              <li><span class="folder">Manual</span></li>
+              <li><span class="folder"><a href="../templates/HomePage-Chart.html" target="_blank">Chart</a></span></li>
+
+
+            </ul>
+          </li>
+        </ul>
+      </ul>
+
+    </div>
+
+    <div class="column">
+      <div>
+        <table border="1">
+          <caption>Summary</caption>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>password</th>
+          </tr>
+          <tbody id="summary">
+
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <table border="1">
+          <caption>Detail</caption>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>password</th>
+            <th>Groups</th>
+            <th>PhoneNumber</th>
+            <th>Age</th>
+          </tr>
+          <tbody id="detail">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+
+    function init() {
+      $.ajax({
+        url: "http://127.0.0.1:8080/report",
+        method: "get",
+        // data: { accountId: id },
+        dataType: "JSON",
+        success: function (data) {
+          console.log("success")
+          initDetail(data.detail);
+          initSummary(data.sum);
+        },
+        error: function (data) {
+          alert("wrong");
+        }
+      })
+
+    }
+    function accountSearch() {
+      console.log("www");
+    }
+    function initDetail(data) {
+      console.log("initDetail")
+
+      var trs = "";
+      for (var i = 0; i < data.length; i++) {
+        trs += "<tr><td>" + data[i].id + "</td>" +
+          "<td>" + data[i].name + "</td>" +
+          "<td>" + data[i].email_address + "</td>" +
+          "<td>" + data[i].passWord + "</td>" +
+          "<td>" + data[i].groups + "</td>" +
+          "<td>" + data[i].phoneNumber + "</td>" +
+          "<td>" + data[i].age + "</td>" +
+
+          "</tr>";
+      }
+      $("#detail").html(trs);
+
+    }
+    function initSummary(data) {
+      console.log("initSummary")
+
+      var trs = "";
+      for (var i = 0; i < data.length; i++) {
+        trs += "<tr><td>" + data[i].id + "</td>" +
+          "<td>" + data[i].name + "</td>" +
+          "<td>" + data[i].email_address + "</td>" +
+          "<td>" + data[i].passWord + "</td>" +
+          "</tr>";
+      }
+      $("#summary").html(trs);
+
+    }
+
+  </script>
+
+</body>
+
+</html>
