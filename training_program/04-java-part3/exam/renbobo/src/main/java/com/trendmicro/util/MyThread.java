@@ -1,7 +1,2 @@
-package com.trendmicro.util;
-
-import java.io.File;
-
-public class MyThread extends Thread {
-
+package com.trendmicro.util;public class MyThread {
 }
