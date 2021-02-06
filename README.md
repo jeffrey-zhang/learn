@@ -1,4 +1,4 @@
-### This is learning repo for hosting training sharing
+### learn & train sharing
 
 > Training Program @ 2020
   #### Git （08/07 ～ 09/06）
